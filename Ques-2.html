@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flight Booking Dashboard</title>
+  <style>
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #eaf2fb;
+  color: #1a1a1a;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  background: #cfe3fd;
+  width: 200px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.nav-item.active,
+.nav-item:hover {
+  background-color: #4391f7;
+  color: white;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-bar {
+  width: 300px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+
+.booking h1 {
+  margin: 20px 0;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  align-items: flex-end;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.search-btn {
+  padding: 10px 20px;
+  background: #45c97c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+
+.results {
+  margin-top: 30px;
+}
+
+.route {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+}
+
+.flight-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  width: 200px;
+}
+
+
+.filter {
+  width: 260px;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: -1px 0 5px rgba(0,0,0,0.1);
+}
+
+.filter h3 {
+  margin-bottom: 20px;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-row button {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filter-row .selected {
+  background: #4391f7;
+  color: white;
+  border: none;
+}
+
+.checkbox {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.note {
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.apply-btn {
+  padding: 10px;
+  width: 100%;
+  background: #45c97c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <aside class="sidebar">
+      <h2 class="logo">maburo.</h2>
+      <nav class="nav">
+        <a href="#" class="nav-item active"> Home</a>
+        <a href="#" class="nav-item"> Ticket</a>
+        <a href="#" class="nav-item"> Schedule</a>
+        <a href="#" class="nav-item"> History</a>
+        <a href="#" class="nav-item">Support</a>
+      </nav>
+      <a href="#" class="nav-item">⚙️ Settings</a>
+    </aside>
+
+   
+    <main class="main-content">
+      
+      <header class="topbar">
+        <input type="text" placeholder="Search something..." class="search-bar">
+        <div class="user-profile">
+          <span class="bell"></span>
+          <span class="user-name">Lintang Candra</span>
+          <img class="avatar" src="https://i.pravatar.cc/30" alt="User Avatar">
+        </div>
+      </header>
+
+     
+      <section class="booking">
+        <h1>Book a Flight</h1>
+        <div class="form-row">
+          <div class="input-group">
+            <label>From</label>
+            <input type="text" value="Warsaw Chopin Airport">
+          </div>
+          <div class="input-group">
+            <label>To</label>
+            <input type="text" value="New Yogyakarta Airport">
+          </div>
+          <div class="input-group">
+            <label>Date</label>
+            <input type="date" value="2020-09-28">
+          </div>
+          <div class="input-group">
+            <label>Passenger</label>
+            <input type="number" value="1" min="1">
+          </div>
+          <button class="search-btn">Search</button>
+        </div>
+      </section>
+
+      
+      <section class="results">
+        <h3>Result</h3>
+        <div class="route">
+          <strong>From WAW</strong> ➝ <strong>To YIA</strong>
+        </div>
+
+        <div class="cards">
+          <div class="flight-card">
+            <h4>Garuda INA</h4>
+            <p>4:35 PM - 1:25 PM</p>
+            <p>Price: <strong>€678</strong></p>
+            <p>Boeing 737 • SN 44029 • KO-REF</p>
+          </div>
+          <div class="flight-card">
+            <h4>Virgin Atlantic</h4>
+            <p>10:05 AM - 12:45 PM</p>
+            <p>Price: <strong>€720</strong></p>
+            <p>Boeing 777 • SN 08383 • JK-AAB</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="filter">
+      <h3>Filter</h3>
+      <label>Cabin Class</label>
+      <div class="filter-row">
+        <button>All</button>
+        <button>Economy</button>
+        <button class="selected">Business</button>
+        <button>First Class</button>
+      </div>
+
+      <label>Price</label>
+      <input type="range" min="600" max="900" value="750">
+
+      <label>Departure</label>
+      <div class="filter-row">
+        <button class="selected">1:35 PM – 4:25 PM</button>
+        <button>10:05 AM – 11:45 PM</button>
+      </div>
+
+      <label>Airline</label>
+      <div class="checkbox">
+        <input type="checkbox" checked> Garuda INA
+        <input type="checkbox"> Lufthansa
+        <input type="checkbox"> Virgin Atlantic
+      </div>
+
+      <p class="note"> Flexible tickets that are free to reschedule.</p>
+
+      <button class="apply-btn">Apply Filter</button>
+    </aside>
+  </div>
+</body>
+</html>
